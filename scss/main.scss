@@ -1,5 +1,93 @@
-$primary-color: #444;
+@import "config";
+
+// The box-sizing property allows us to
+// include the padding and border in an
+// element's total width and height.
+* {
+  box-sizing: border-box;
+}
 
 body {
+  @include background;
   background: $primary-color;
+  color: #fff;
+  height: 100%;
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+}
+//headings
+h1,
+h2,
+h3 {
+  margin: 0;
+
+  //   Font size is the size of the font,
+  //   can be bigger or smaller
+  //   (for example 18px is a bigger font than 8px)
+  //    - it works in the same way as for example
+  //    the font-size in Word
+  // Font weight enables you to make
+  // the font bold (again, similarly to
+  //  the bold font in Word)
+
+  font-weight: 400;
+  &.lg-heading {
+    font-size: 6rem;
+  }
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    // lighten method take two parameters first one the
+    //color and the second one is the level of lighten that i want
+    // rgba allow us to see the background throw the color
+
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+header {
+  // header position allways
+  // on the top even if I scroll down
+  position: fixed;
+
+  //   The z-index property specifies the stack order of an element.
+
+  // An element with greater stack order is always in front of an element with a lower stack order.
+
+  // Note: z-index only works on positioned elements (position: absolute, position: relative, position: fixed, or position: sticky).
+  z-index: 2;
+}
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+  height: 100%;
+
+  .icons {
+    // pushing down
+    margin-top: 1rem;
+
+    a {
+      // add space between icons
+      padding: 0.4rem;
+      &:hover {
+        color: $secondary-color;
+        @include easeOut;
+      }
+    }
+  }
+  &#home {
+    // to prevent any scroll bar
+    overflow: hidden;
+    h1 {
+      // يآخذ 20 جزء من ارتفاع الصفحة
+      margin-top: 20vh;
+    }
+  }
 }
